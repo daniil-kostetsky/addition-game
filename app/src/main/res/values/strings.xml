@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Calculate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_logo">Welcome logo</string>
+    <string name="title_name">Счет</string>
+    <string name="button_understand_text">Понятно</string>
+    <string name="choose_level">Выберите уровень:</string>
+    <string name="test_level">Тестовый</string>
+    <string name="easy_level">Легкий</string>
+    <string name="medium_level">Средний</string>
+    <string name="hard_level">Тяжелый</string>
+    <string name="answers_progress">Правильных ответов: %s\nМинимум: %s</string>
 </resources>
