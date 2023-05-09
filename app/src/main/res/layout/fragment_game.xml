@@ -46,6 +46,7 @@
         style="@style/AnswerOptionTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_orange_dark"
         android:text="\?"
         app:layout_constraintBottom_toBottomOf="@+id/tv_arithmetic_option"
         app:layout_constraintEnd_toStartOf="@+id/tv_equal"

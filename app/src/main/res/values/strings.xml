@@ -11,4 +11,6 @@
     <string name="medium_level">Средний</string>
     <string name="hard_level">Тяжелый</string>
     <string name="answers_progress">Правильных ответов: %s\nМинимум: %s</string>
+    <string name="retry">Попробовать снова</string>
+    <string name="game_over">Game Over</string>
 </resources>

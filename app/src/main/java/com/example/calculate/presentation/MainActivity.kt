@@ -7,6 +7,6 @@ import com.example.calculate.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_game)
+        setContentView(R.layout.fragment_game_finished)
     }
 }
