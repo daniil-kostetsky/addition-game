@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.GameFragment">
+
+    <TextView
+        android:id="@+id/tv_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="00:00"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_left_number"
+        style="@style/AnswerOptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="70"
+        app:layout_constraintBottom_toTopOf="@+id/tv_answers_progress"
+        app:layout_constraintEnd_toStartOf="@+id/tv_arithmetic_option"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_arithmetic_option"
+        style="@style/AnswerOptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_left_number"
+        app:layout_constraintEnd_toStartOf="@+id/tv_question"
+        app:layout_constraintStart_toEndOf="@+id/tv_left_number" />
+
+    <TextView
+        android:id="@+id/tv_question"
+        style="@style/AnswerOptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_orange_dark"
+        android:text="\?"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_arithmetic_option"
+        app:layout_constraintEnd_toStartOf="@+id/tv_equal"
+        app:layout_constraintStart_toEndOf="@+id/tv_arithmetic_option" />
+
+    <TextView
+        android:id="@+id/tv_equal"
+        style="@style/AnswerOptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        app:layout_constraintBottom_toBottomOf="@+id/tv_question"
+        app:layout_constraintEnd_toStartOf="@+id/tv_result"
+        app:layout_constraintStart_toEndOf="@+id/tv_question" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        style="@style/AnswerOptionTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_equal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_equal" />
+
+    <TextView
+        android:id="@+id/tv_answers_progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/answers_progress"
+        app:layout_constraintBottom_toTopOf="@+id/progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_left_number" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:max="100"
+        android:secondaryProgressTint="@android:color/background_dark"
+        app:layout_constraintBottom_toTopOf="@+id/tv_answer_option_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_answers_progress" />
+
+
+    <TextView
+        android:id="@+id/tv_answer_option_1"
+        style="@style/QuestionTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:text="2"
+        app:layout_constraintBottom_toTopOf="@id/tv_answer_option_4"
+        app:layout_constraintEnd_toStartOf="@+id/tv_answer_option_2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_answer_option_2"
+        style="@style/QuestionTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        android:text="15"
+        app:layout_constraintBottom_toTopOf="@id/tv_answer_option_5"
+        app:layout_constraintEnd_toStartOf="@+id/tv_answer_option_3"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer_option_1" />
+
+    <TextView
+        android:id="@+id/tv_answer_option_3"
+        style="@style/QuestionTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        android:text="56"
+        app:layout_constraintBottom_toTopOf="@id/tv_answer_option_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer_option_2" />
+
+    <TextView
+        android:id="@+id/tv_answer_option_4"
+        style="@style/QuestionTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_answer_option_6"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer_option_5" />
+
+    <TextView
+        android:id="@+id/tv_answer_option_5"
+        style="@style/QuestionTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:text="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_answer_option_4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_answer_option_6"
+        style="@style/QuestionTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer_option_4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,35 @@
+<!-- image from https://freesvg.org/frowning-smiley-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="153.61dp"
+    android:height="153.61dp"
+    android:viewportWidth="544.29"
+    android:viewportHeight="544.29">
+  <path
+      android:pathData="M272.14,272.14m-267.14,0a267.14,267.14 0,1 1,534.29 0a267.14,267.14 0,1 1,-534.29 0"
+      android:strokeLineJoin="miter"
+      android:strokeWidth="10"
+      android:fillColor="#ffff00"
+      android:strokeColor="#000000"
+      android:fillType="nonZero"
+      android:strokeLineCap="butt"/>
+  <path
+      android:pathData="M155.21,223.75a35.57,49.25 0,1 0,71.13 0a35.57,49.25 0,1 0,-71.13 0z"
+      android:strokeLineJoin="miter"
+      android:strokeWidth="10"
+      android:fillColor="#000000"
+      android:strokeColor="#000000"
+      android:fillType="nonZero"
+      android:strokeLineCap="butt"/>
+  <path
+      android:pathData="M317.94,223.75a35.57,49.25 0,1 0,71.13 0a35.57,49.25 0,1 0,-71.13 0z"
+      android:strokeLineJoin="miter"
+      android:strokeWidth="10"
+      android:fillColor="#000000"
+      android:strokeColor="#000000"
+      android:fillType="nonZero"
+      android:strokeLineCap="butt"/>
+  <path
+      android:pathData="M425.06,420.39C389.81,360.52 348.6,317.37 275.24,317.37c-71.27,0 -123.45,49.73 -156.01,105.05 29.79,-35.02 73.41,-75.25 152.92,-75.25 95,0 111.61,33.31 152.92,73.22z"
+      android:fillColor="#000000"
+      android:strokeColor="#00000000"/>
+</vector>
