@@ -1,8 +1,12 @@
 package com.example.calculate.domain.entities
 
-enum class GameLevel {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+enum class GameLevel : Parcelable{
     TEST,
     EASY,
-    NORMAL,
+    MEDIUM,
     HARD
 }
