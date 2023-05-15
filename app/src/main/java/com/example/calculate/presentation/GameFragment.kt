@@ -1,15 +1,18 @@
 package com.example.calculate.presentation
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.calculate.R
 import com.example.calculate.databinding.FragmentGameBinding
 import com.example.calculate.domain.entities.GameLevel
 import com.example.calculate.domain.entities.GameResult
-import com.example.calculate.domain.entities.GameSettings
 
 class GameFragment : Fragment() {
 
@@ -17,6 +20,23 @@ class GameFragment : Fragment() {
 
     private var _binding: FragmentGameBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("FragmentGameBinding = null")
+
+    private val gameViewModel: GameViewModel by lazy {
+        ViewModelProvider(this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+        )[GameViewModel::class.java]
+    }
+
+    private val tvOptions by lazy {
+        mutableListOf<TextView>().apply {
+            add(binding.tvAnswerOption1)
+            add(binding.tvAnswerOption2)
+            add(binding.tvAnswerOption3)
+            add(binding.tvAnswerOption4)
+            add(binding.tvAnswerOption5)
+            add(binding.tvAnswerOption6)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,16 +53,61 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvAnswerOption1.setOnClickListener {
-            launchGameFinishedFragment(
-                GameResult(
-                    true,
-                    0,
-                    0,
-                    GameSettings(0,0,0,0)
-                )
-            )
+        observeViewModel()
+        setOnAnswersOptionsCLickListener()
+        gameViewModel.startGame(gameLevel)
+
+    }
+
+    private fun setOnAnswersOptionsCLickListener() {
+        for (tvAnswerOption in tvOptions) {
+            tvAnswerOption.setOnClickListener {
+                gameViewModel.chooseAnswer(tvAnswerOption.text.toString().toInt())
+            }
         }
+    }
+
+    private fun observeViewModel() {
+        gameViewModel.formattedTime.observe(viewLifecycleOwner) {
+            binding.tvTimer.text = it
+        }
+        gameViewModel.gameQuestion.observe(viewLifecycleOwner) {
+            binding.tvLeftNumber.text = it.visibleNumber.toString()
+            binding.tvResult.text = it.sum.toString()
+            for (i in tvOptions.indices) {
+                tvOptions[i].text = it.answerOptions[i].toString()
+            }
+        }
+        gameViewModel.percentOfRightAnswers.observe(viewLifecycleOwner) {
+            binding.progressBar.setProgress(it, true)
+        }
+        gameViewModel.progressAnswers.observe(viewLifecycleOwner) {
+            binding.tvAnswersProgress.text = it
+        }
+        gameViewModel.enoughCountOfRightAnswers.observe(viewLifecycleOwner) {
+            binding.tvAnswersProgress.setTextColor(getColorByState(it))
+        }
+        gameViewModel.enoughPercentOfRightAnswers.observe(viewLifecycleOwner) {
+            val color = getColorByState(it)
+            binding.progressBar.progressTintList = ColorStateList.valueOf(color)
+        }
+        gameViewModel.minPercent.observe(viewLifecycleOwner) {
+            binding.progressBar.secondaryProgress = it
+        }
+        gameViewModel.gameResult.observe(viewLifecycleOwner) {
+            launchGameFinishedFragment(it)
+        }
+
+    }
+
+    private fun getColorByState(state: Boolean): Int {
+        val colorResId =
+            if (state) {
+                android.R.color.holo_green_light
+            } else {
+                android.R.color.holo_red_light
+            }
+        return ContextCompat.getColor(requireContext(), colorResId)
     }
 
 
