@@ -5,7 +5,6 @@ import android.os.CountDownTimer
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.calculate.R
 import com.example.calculate.data.GameRepositoryImpl
 import com.example.calculate.domain.entities.GameLevel
@@ -67,6 +66,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         getGameSettings(gameLevel)
         startTimer()
         generateQuestion()
+        updateProgress()
     }
 
     private fun getGameSettings(gameLevel: GameLevel) {
