@@ -13,4 +13,8 @@
     <string name="answers_progress">Правильных ответов: %s\nМинимум: %s</string>
     <string name="retry">Попробовать снова</string>
     <string name="game_over">Game Over</string>
+    <string name="tv_min_count_of_right_answers">Необходимое количество правильных ответов: %s</string>
+    <string name="tv_user_score">Ваш счет: %s</string>
+    <string name="tv_min_percentage">Необходимый процент правильных ответов: %s%%</string>
+    <string name="tv_user_percentage">Ваш процент: %s%%</string>
 </resources>
