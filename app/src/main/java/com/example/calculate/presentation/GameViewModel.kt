@@ -2,9 +2,9 @@ package com.example.calculate.presentation
 
 import android.app.Application
 import android.os.CountDownTimer
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.calculate.R
 import com.example.calculate.data.GameRepositoryImpl
 import com.example.calculate.domain.entities.GameLevel
@@ -14,14 +14,13 @@ import com.example.calculate.domain.entities.GameSettings
 import com.example.calculate.domain.usecases.GenerateQuestionUseCase
 import com.example.calculate.domain.usecases.GetGameSettingsUseCase
 
-class GameViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val context = application
+class GameViewModel(
+    private val gameLevel: GameLevel,
+    private val application: Application) : ViewModel() {
 
     private var timer: CountDownTimer? = null
 
     private lateinit var gameSettings: GameSettings
-    private lateinit var gameLevel: GameLevel
 
     private val repository = GameRepositoryImpl
     private val getGameSettingsUseCase = GetGameSettingsUseCase(repository)
@@ -62,15 +61,17 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     val gameResult: LiveData<GameResult>
         get() = _gameResult
 
-    fun startGame(gameLevel: GameLevel) {
-        getGameSettings(gameLevel)
+    init {
+        startGame()
+    }
+    private fun startGame() {
+        getGameSettings()
         startTimer()
         generateQuestion()
         updateProgress()
     }
 
-    private fun getGameSettings(gameLevel: GameLevel) {
-        this.gameLevel = gameLevel
+    private fun getGameSettings() {
         gameSettings = getGameSettingsUseCase(gameLevel)
         _minPercent.value = gameSettings.minPercentOfRightAnswer
     }
@@ -93,7 +94,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         val userPercent = calculatePercentOfRightAnswers()
         _percentOfRightAnswers.value = userPercent
         _progressAnswers.value = String.format(
-            context.resources.getString(R.string.answers_progress),
+            application.resources.getString(R.string.answers_progress),
             countOfRightAnswers,
             gameSettings.minCountOfRightAnswers
         )

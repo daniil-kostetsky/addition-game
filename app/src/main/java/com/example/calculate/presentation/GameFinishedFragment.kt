@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.calculate.R
 import com.example.calculate.databinding.FragmentGameFinishedBinding
 import com.example.calculate.domain.entities.GameResult
 
@@ -32,6 +33,16 @@ class GameFinishedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupClickListeners()
+        setSmileImage()
+        setMinCountOfRightAnswers()
+        setUserCountOfRightAnswers()
+        setMinPercentageOfRightAnswers()
+        setUserPercentageOfRightAnswers()
+    }
+
+    private fun setupClickListeners() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
@@ -40,6 +51,43 @@ class GameFinishedFragment : Fragment() {
             })
         binding.buttonRetry.setOnClickListener {
             retryGame()
+        }
+    }
+
+    private fun setUserPercentageOfRightAnswers() {
+        val userPercentage = ((gameResult.countOfRightAnswers /
+                gameResult.countOfQuestions.toDouble()) * 100).toInt()
+        binding.tvScorePercentage.text = String.format(
+            getString(R.string.tv_user_percentage),
+            userPercentage.toString()
+        )
+    }
+
+    private fun setMinPercentageOfRightAnswers() {
+        binding.tvRequiredPercentage.text = String.format(
+            getString(R.string.tv_min_percentage),
+            gameResult.gameSettings.minPercentOfRightAnswer.toString()
+        )
+    }
+
+    private fun setUserCountOfRightAnswers() {
+        binding.tvScoreAnswers.text = String.format(
+            getString(R.string.tv_user_score),
+            gameResult.countOfRightAnswers.toString()
+        )
+    }
+
+    private fun setMinCountOfRightAnswers() {
+        binding.tvRequiredAnswers.text = String.format(
+            getString(R.string.tv_min_count_of_right_answers),
+            gameResult.gameSettings.minCountOfRightAnswers.toString())
+    }
+
+    private fun setSmileImage() {
+        if (gameResult.isWin) {
+            binding.ivSmileResult.setImageResource(R.drawable.smile_fun)
+        } else {
+            binding.ivSmileResult.setImageResource(R.drawable.smile_sad)
         }
     }
 
@@ -56,7 +104,8 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun retryGame() {
-        requireActivity().supportFragmentManager.popBackStack(GameFragment.NAME,
+        requireActivity().supportFragmentManager.popBackStack(
+            GameFragment.NAME,
             FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
