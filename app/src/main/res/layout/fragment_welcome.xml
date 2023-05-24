@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Add description"
+                android:text="@string/game_description"
                 android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/tv_title" />
 

@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome_logo">Welcome logo</string>
-    <string name="title_name">Счет</string>
+    <string name="title_name">Сложение</string>
     <string name="button_understand_text">Понятно</string>
     <string name="choose_level">Выберите уровень:</string>
     <string name="test_level">Тестовый</string>
@@ -20,4 +20,5 @@
     <string name="plus_option">+</string>
     <string name="question_symbol">\?</string>
     <string name="equal_symbol">=</string>
+    <string name="game_description">Правила игры:\nИзвестно первое слагаемое и сумма, требуется найти второе слагаемое под знаком \"?\"\nНапример: 5 + ? = 9, тогда искомое слагаемое равно 4.</string>
 </resources>
