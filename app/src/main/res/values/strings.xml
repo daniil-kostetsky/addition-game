@@ -17,4 +17,7 @@
     <string name="tv_user_score">Ваш счет: %s</string>
     <string name="tv_min_percentage">Необходимый процент правильных ответов: %s%%</string>
     <string name="tv_user_percentage">Ваш процент: %s%%</string>
+    <string name="plus_option">+</string>
+    <string name="question_symbol">\?</string>
+    <string name="equal_symbol">=</string>
 </resources>
